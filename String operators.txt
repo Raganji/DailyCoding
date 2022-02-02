@@ -1,0 +1,26 @@
+String methods and properties
+
+length
+slice()
+substring()
+substr()
+replace()
+toUpperCase()
+toLowerCase()
+concat()
+trim()
+padStart()
+padEnd()
+charAt(position)
+charCodeAt(position)
+split()
+
+Full list: https://www.w3schools.com/jsref/jsref_obj_string.asp
+
+Note: regular expressions (written without quotes)
+
+
+
+RegEx flags:
+/i (insensitive)
+/g (global match - such as replace all)
