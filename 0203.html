@@ -5,11 +5,35 @@
   <meta charset="UTF-8"/>
 </head>
 <body>
-  <button>Press me</button>
+  <button>Log in</button>
   <script>
     // Your JavaScript goes here!
-    
-  </script>
+    const button = document.querySelector('button');
 
+    function check() {
+      let login = prompt('What is your username?');
+
+      if (login == 'Admin') {
+        let password = prompt('What is the password?');
+
+        if (password == 'TheMaster') {
+          alert('Welcome!');
+        } else if (password == '' || null) {
+          alert('Canceled');
+        } else {
+          alert('Wrong password.');
+        }
+        
+      } else if (login == '' || null) {
+        alert('Canceled');
+      } else {
+        alert('I don\'t know you.');
+      };
+
+
+    }
+
+    button.addEventListener('click', check);
+  </script>
 </body>
 </html>
