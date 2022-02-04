@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Title</title>
+  <title>February 3rd - Nested Ifs</title>
   <meta charset="UTF-8"/>
 </head>
 <body>
@@ -13,18 +13,18 @@
     function check() {
       let login = prompt('What is your username?');
 
-      if (login == 'Admin') {
+      if (login === 'Admin') {
         let password = prompt('What is the password?');
 
-        if (password == 'TheMaster') {
+        if (password === 'TheMaster') {
           alert('Welcome!');
-        } else if (password == '' || null) {
+        } else if (password === '' || password === null) {
           alert('Canceled');
         } else {
           alert('Wrong password.');
         }
-        
-      } else if (login == '' || null) {
+
+      } else if (login === '' || login === null) {
         alert('Canceled');
       } else {
         alert('I don\'t know you.');
