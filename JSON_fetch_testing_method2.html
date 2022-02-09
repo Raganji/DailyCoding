@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>February 9th - Simple XLT key ID checker</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <h2>Getting value of an XLT key from JSON object</h2>
+  <p id="demo"></p>
+  <script>
+
+  let obj = null; // global version
+  async function load() {
+  // original example below
+    let url = 'https://my-json-server.typicode.com/typicode/demo/db';
+  // my replaced example
+  //  let url = 'http://xlt-api.alpha.linecorp.com/downloadXLT/XLT-MESSAGE/Web%20Browser/1.0.0/en_US/json';
+    // let obj = null; // function scope version
+
+    try {
+        obj = await (await fetch(url)).json();
+    } catch(e) {
+        console.log('error');
+    }
+
+    console.log(obj);
+  }
+
+  load();
+  document.getElementById("demo").innerHTML = obj; // doesn't write anything, because obj is null
+  </script>
+</body>
+</html>
