@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>February 10th - Nesting functions</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <h2>Getting value of an XLT key from JSON object</h2>
+  <p id="demo">Fetching...</p>
+  <script>
+    let jsonAsString = "Original string"; // declared stringified variable here to allow global scope
+    let theUrl = "https://soundcloud.com/oembed?url=http%3A//soundcloud.com/forss/flickermood&format=json"; // sets URL for cleaner code below
+
+    // the below 2 functions are for fetching the json data and then stringifying it
+    const getJSON = async url => {
+      const response = await fetch(url);
+      if(!response.ok) // check if response worked (no 404 errors etc...)
+        throw new Error(response.statusText);
+
+      const data = response.json(); // get JSON from the response
+      return data; // returns a promise, which resolves to this data value
+    }
+
+    console.log("Fetching data...");
+
+    function downloadData() { // makes this a function
+
+      getJSON(theUrl).then(data => { // uses URL assigned above
+      console.log(data);
+      jsonAsString = JSON.stringify(data); // converts to a string
+      document.getElementById("demo").innerHTML = jsonAsString;
+      testExtFunction(jsonAsString); // now that variable is changed here, will call the function defined below
+      }).catch(error => {
+      console.error(error);
+      });
+    };
+
+    // function to manipulate stringified json data can be found below; it's actually executed within the getJSON function
+    function testExtFunction(text) {
+      let lettah_at_5 = text.charAt(5);
+      let text_length = text.length;
+      console.log("5th char :" + lettah_at_5 + ", length: " + text_length);
+      console.log(text);
+    };
+
+    downloadData(); // calls the function above
+  
+    // testing what happens if function is put here in script; answer: it checks jsonAsString's original value as it runs this before getJSON
+    // testExtFunction(jsonAsString);
+
+  </script>
+
+</body>
+</html>
