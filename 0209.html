@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>February 8th - Simple XLT key ID checker</title>
+  <title>February 9th - Simple XLT key ID checker</title>
   <meta charset="UTF-8"/>
 </head>
 <body>
@@ -9,7 +9,7 @@
   <p id="demo"></p>
   <script>
     // Get text from user via a prompt
-    let enteredText = prompt("What's the key ID?");
+    let enteredText = prompt("What's the key ID?").toLowerCase().trim();
 
     // Sets an example of XLT data in the JSON format
     const xltData = {"xlt.error":"error","xlt.success":"success","xlt.warning":"warning","xlt.ok":"ok"};
