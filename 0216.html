@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>February 16th - Boxes and submit button</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+<div><input id="formulaPart1" type="text">1</input></div>
+<div><input id="formulaPart2" type="text">2</input></div>
+<div><input id="formulaPart3" type="text">3</input></div>
+<div><input id="formulaPart4" type="text">4</input></div>
+<div><input id="formulaPart5" type="text">5</input></div>
+<div><input id="formulaPart6" type="text">6</input></div>
+<div><input id="formulaPart7" type="text">7</input></div>
+<div><input id="formulaPart8" type="text">8</input></div>
+<div><button>Generate</button></div>
+<div id="output"></div>
+  <script>
+    // Sets up button for event listener, and output for eventual output
+    const button = document.querySelector("button");
+    const output = document.querySelector("#output"); // has to have the #, not sure why
+
+    // Defines parts of formula, need to fix this
+    const formulaPart1 = document.getElementById("formulaPart1").value;
+    const formulaPart2 = document.querySelector("#formulaPart2");
+    const formulaPart3 = document.querySelector("#formulaPart3");
+    const formulaPart4 = document.querySelector("#formulaPart4");
+    const formulaPart5 = document.querySelector("#formulaPart5");
+    const formulaPart6 = document.querySelector("#formulaPart6");
+    const formulaPart7 = document.querySelector("#formulaPart7");
+    const formulaPart8 = document.querySelector("#formulaPart8");
+
+    // this is a problem, it keeps passing an array instead of a string; need to fix with above
+    let fullFormula = [formulaPart1, formulaPart2, formulaPart3, formulaPart4,
+        formulaPart5, formulaPart6, formulaPart7, formulaPart8].join();
+
+    // Displays full formula, or gives guidance to user
+    function displayFormula() {
+      if(fullFormula == 0) {
+        output.textContent = "You didn't fill out the form!"
+      } else {
+        console.log("Part1: " + formulaPart1);
+        console.log("Full formula:" + fullFormula);
+        output.textContent = `Formula for first column: ${fullFormula.value}`;
+      }
+    };
+
+    // Listens for the button click, and displays formula
+    button.addEventListener('click', displayFormula);
+  </script>
+</body>
+</html>
