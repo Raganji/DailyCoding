@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>February 17th - Boxes and submit button</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+<div><input id="firstValue" type="text">← First value to search</input></div>
+<div><input id="sheetName" type="text">← Name of database sheet</input></div>
+<div><input id="upperLeft" type="text">← Upper left of value range</input></div>
+<div><input id="lowerRight" type="text">← Lower right of value range</input></div>
+<div><input id="firstColumn" type="text">← First column number</input></div>
+<div><input id="lastColumn" type="text">← Last column number</input></div>
+<div><button id="generate">Generate</button><button id="reset">Reset</button></div>
+<div id="output"></div>
+  <script>
+    //Sets some variables as const, plus other variables as global
+    let fullFormula = 0;
+    const formulaPart1 = "=VLOOKUP(";
+    let firstValue, sheetName;
+    const formulaPart4 = "!";
+    let upperLeft, lowerRight, firstColumn, lastColumn;
+    const formulaPart8 = "FALSE)";
+    let upperLeftParsed, lowerRightParsed;
+
+    // Sets up button for event listener, and output for eventual output
+    const generateButton = document.querySelector("#generate");
+    const resetButton = document.querySelector("#reset");
+    const output = document.querySelector("#output"); // has to have the #, not sure why
+
+    // Defines parts of formula, need to fix this
+    function getFields() {
+      firstValue = document.getElementById("firstValue").value;
+      sheetName = document.getElementById("sheetName").value;
+      upperLeft = document.getElementById("upperLeft").value;
+      lowerRight = document.getElementById("lowerRight").value;
+      firstColumn = document.getElementById("firstColumn").value;
+      lastColumn = document.getElementById("lastColumn").value;
+    };
+
+    function parseFields() {
+      // strip things here
+      upperLeftParsed = [":$", upperLeft.replace(/[^a-z]/gi, '').toUpperCase(), "$", upperLeft.replace(/[^0-9]/g, '')].join("");
+      lowerRightParsed = [":$", lowerRight.replace(/[^a-z]/gi, '').toUpperCase(), "$", lowerRight.replace(/[^0-9]/g, '')].join("");
+    };
+
+    // combines all values into the final formula
+    // example of proper formula: =VLOOKUP(A6, properties!$A$2:$T$4090, 4, FALSE)
+    function setFormula() {
+      fullFormula = [formulaPart1, firstValue.toUpperCase(), ", ", sheetName, formulaPart4,
+          upperLeftParsed, lowerRightParsed, ", ", firstColumn, ", ", formulaPart8].join(""); // "" removes commas from result
+    };
+
+    // Displays full formula, or gives guidance to user
+    function displayFormula() {
+      console.log("Part1: " + firstValue);
+      console.log("Part2: " + sheetName);
+      console.log("Full formula: " + fullFormula);
+      output.textContent = `Formula for first column: ${fullFormula}`;
+    };
+
+    // Generate function, added for layering; only works if all fields have text
+    function generate() {
+        getFields(); // get fields first to check
+      if (firstValue && sheetName && upperLeft && lowerRight && firstColumn && lastColumn) { // Checks that all fields have text (aren't falsey)
+        parseFields();
+        setFormula();
+        displayFormula();
+      } else { // If any text field is empty, this is triggered
+        output.textContent = "All fields must contain text.";
+      }
+    };
+
+    // Resets all fields
+    function reset() {
+      // Define variable as all fields
+      const allFields = document.querySelectorAll("#firstValue, #sheetName, #upperLeft, #lowerRight, #firstColumn, #lastColumn");
+      // Changes value of each thing to ""
+      allFields.forEach(input => {
+        input.value = "";
+      });
+    };
+
+    // Listens for the button click, and displays formula
+    generateButton.addEventListener('click', generate);
+    // Enables reset button
+    resetButton.addEventListener('click', reset);
+
+    //Improvements to make
+    // - Generate a formula for all columns
+    // - Have a copy button to copy the formula
+    // - Let user enter column as letters and automatically determine numbers for formula
+    // - Allow user to generate excel file that can be copy and pasted based on above
+  </script>
+</body>
+</html>
