@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>February 20th - Excel column converter improvement</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    // Goal: convert Excel letters to column names
+    let columnNumber = 0;
+    let columnLetters = "A";
+    let lettersLength = 0;
+    let column = prompt("What column?");
+
+    function getColumnLetters() {
+      // determine the column letters
+      columnLetters = column.replace(/[^a-z]/gi, "");
+      lettersLength = columnLetters.length;
+      console.log("Length: " + lettersLength);
+    };
+
+    function convertToNumber(columnLetters) {
+      var letterPosition, letterValue = 0;
+      for (letterPosition = 0; letterPosition < lettersLength; letterPosition++) {
+        console.log("Position " + letterPosition);
+        switch (lettersLength) {
+          case 1: // when there is one letter in the column name (A-Z)
+            letterValue += parseInt(columnLetters[letterPosition], 36) - 9;
+            break;
+          case 2: // when there are two letters in the column name (AA - ZZ)
+            switch (letterPosition) {
+              case 0: // AA = 27; first value should be multiplied by 26
+                letterValue += 26 * (parseInt(columnLetters[letterPosition], 36) - 9);
+                break;
+              case 1: // last case is always the original value of the letter
+                letterValue += parseInt(columnLetters[letterPosition], 36) - 9;
+                break;
+            };
+            break;
+          case 3: // when there are three letters in the column name (AAA - ZZZ)
+            switch (letterPosition) {
+              case 0:
+                letterValue += 676 * (parseInt(columnLetters[letterPosition], 36) - 9);
+                break;
+              case 1:
+                letterValue += 26 * (parseInt(columnLetters[letterPosition], 36) - 9);
+                break;
+              case 2: // last case is always the original value of the letter
+                letterValue += parseInt(columnLetters[letterPosition], 36) - 9;
+                break;
+            };
+             break;
+          };
+      }
+      return letterValue;
+    };
+
+    function runAll() {
+      getColumnLetters();
+      if (lettersLength < 4) {
+        console.log(convertToNumber(columnLetters));
+    } else {
+      console.log("There are too many letters in the column!");
+    }
+    };
+
+    runAll();
+
+  </script>
+</body>
+</html>
