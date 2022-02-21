@@ -40,8 +40,10 @@
 
     function parseFields() {
       // strip things here
-      upperLeftParsed = [":$", upperLeft.replace(/[^a-z]/gi, '').toUpperCase(), "$", upperLeft.replace(/[^0-9]/g, '')].join("");
-      lowerRightParsed = [":$", lowerRight.replace(/[^a-z]/gi, '').toUpperCase(), "$", lowerRight.replace(/[^0-9]/g, '')].join("");
+      upperLeftParsed = [":$", upperLeft.replace(/[^a-z]/gi, '').toUpperCase(),
+        "$", upperLeft.replace(/[^0-9]/g, '')].join("");
+      lowerRightParsed = [":$", lowerRight.replace(/[^a-z]/gi, '').toUpperCase(),
+        "$", lowerRight.replace(/[^0-9]/g, '')].join("");
     };
 
     // combines all values into the final formula
@@ -74,7 +76,8 @@
     // Resets all fields
     function reset() {
       // Define variable as all fields
-      const allFields = document.querySelectorAll("#firstValue, #sheetName, #upperLeft, #lowerRight, #firstColumn, #lastColumn");
+      const allFields = document.querySelectorAll("#firstValue, #sheetName, #upperLeft,
+        #lowerRight, #firstColumn, #lastColumn");
       // Changes value of each thing to ""
       allFields.forEach(input => {
         input.value = "";

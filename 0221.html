@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>February 21st - arrays</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+
+  <script>
+    //Some ways to set arrays
+
+    // Using single variables for reference
+    let car1 = "Saab";
+    let car2 = "Volvo";
+    let car3 = "BMW";
+
+    //Easy array syntax
+    const cars = ["Saab", "Volvo", "BMW"];
+
+    // multiple line array
+    const carnames = [
+    "Saab",
+    "Volvo",
+    "BMW"
+    ];
+
+    //create an array and then provide elements
+    const cartypes = [];
+    cartypes[0]= "Saab";
+    cartypes[1]= "Volvo";
+    caryptes[2]= "BMW";
+
+    //using javascript keyword new (no reason to do it, just for education)
+    const cararray = new Array("Saab", "Volvo", "BMW");
+
+    //Accessing array elements
+    let car = cars[0];
+
+    // changing an array element
+    cars[0] = "Opel";
+
+    //access the full array
+    document.getElementById("demo").innerHTML = cars;
+
+    cars.length // returns the number of elements in an array
+    cars.sort() // sorts the array
+
+    // Array is different than object (object uses names, array uses numbers)
+    // Will explore "objects" more tomorrow
+  </script>
+</body>
+</html>
