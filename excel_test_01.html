@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic test of Excel functions</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+
+  <script>
+    // Script here
+    var excel = new ActiveXObject ( "Excel.Application" ); excel.visible = true;
+    var book = excel.Workbooks.Add; book.Worksheets.Add; book.Worksheets(1).Activate;
+    book.Worksheets(1).Cells(1,1).value="My First Spreadsheet";
+    book.Worksheets(1).SaveAs("C:\excel_file.XLS");
+  </script>
+
+</body>
+</html>

@@ -11,7 +11,14 @@ https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-
 
 # Fun projects to try
 - Run RegEx expressions on inputted text (enter text, enter regex, spit out an output)
+- Create a character limit for the inputted text box
 - Get JSON result of an Excel file, conduct RegEx expressions on it
 - Sort and order ux writing project list each month
 - Create a trello card (any kind)
 - Send something to slack (using API)
+- Simple text replacer
+
+# Libraries and so on
+- sheetjs: https://github.com/SheetJS
+- jquery: https://jquery.com/
+- jszip: https://stuk.github.io/jszip/
