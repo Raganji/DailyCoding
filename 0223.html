@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>February 23rd - array things</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <h2>JavaScript Array Methods</h2>
+  <h2>toString()</h2>
+  <p>The toString() method returns an array as a comma separated string:</p>
+  <p id="demo1"></p>
+  <p>The join() method does the same, but allows you to define separator:</p>
+  <p id="demo2"></p>
+  <script>
+    // toString() and join()
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML = fruits.toString();
+    document.getElementById("demo2").innerHTML = fruits.join(" * ");
+
+    // popping and pushing
+    // pop() removes the last element
+    const vegetables = ["Broccoli", "Lettuce", "Pepper", "Cauliflower"];
+    vegetables.pop();
+    let veggie = vegetables.pop();
+    console.log(veggie);
+
+    //push() adds a new element to an array
+    vegetables.push("Onion")
+    console.log(vegetables);
+
+    //shift() removes the first element and shifts all others down Once
+    vegetables.shift();
+    console.log(vegetables[0]); // access elements using their number, starting with 0
+
+    //unshift() adds a new element at the beginning, and unshifts older ones
+    vegetables.unshift("Garlic");
+    console.log(vegetables[1]);
+
+    //concat() merges existing arrays
+    const myGirls = ["Cecilie", "Lone"];
+    const myBoys = ["Emil", "Tobias", "Linus"];
+    const myChildren = myGirls.concat(myBoys);
+
+    //concat() can take any number of array arrangements
+    const arr1 = ["Cecilie", "Lone"];
+    const arr2 = ["Emil", "Tobias", "Linus"];
+    const arr3 = ["Robin", "Morgan"];
+    const myChildren2 = arr1.concat(arr2, arr3);
+
+    //concat() can also take strings as arguments
+    const arr4 = ["Emil", "Tobias", "Linus"];
+    const myChildren3 = arr1.concat("Peter");
+
+    //splice() can add new items to an array
+    const cats = ["Cookie", "Jazz", "Joey", "Sonny"];
+    cats.splice(2, 0, "Snowy", "Mew"); // first (2) is where, second (0) is how many to remove
+
+    //use splice to remove elements without leaving holes
+    const dogs = ["Chance", "Buffy", "Belle", "Peter"];
+    dogs.splice(0, 1);
+
+    //slice() copies part of an array to a new array (does not remove from source)
+    const people = ["John","Harry","Sally","Steve"];
+    const somePeople1 = people.slice(1, 2); // selects from start, up to but not including end
+    const somePeople2 = people.slice(2); // if no end, takes rest of array
+    console.log("SP1 = " + somePeople1 + " & SP2 = " + somePeople2);
+
+  </script>
+</body>
+</html>
