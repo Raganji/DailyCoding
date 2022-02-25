@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>February 25th - continue skips to next iteration of loop</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <label for="number">Enter number: </label>
+  <input id="number" type="text">
+  <button>Generate integer squares</button>
+  <p>Output: </p>
+  <script>
+    //Set variables for parts of doc
+    const para = document.querySelector('p');
+    const input = document.querySelector('input');
+    const btn = document.querySelector('button');
+
+    //Listen for a click
+    btn.addEventListener('click', () => {
+      para.textContent = 'Output: ';
+      const num = input.value;
+      // below two lines basically reset the field after "num" is defined above
+      input.value = '';
+      input.focus(); // sets focus on the input field
+      // starts at 1, exits when the counter is bigger than input, adds 1 each time
+      for (let i = 1; i <= num; i++) {
+        let sqRoot = Math.sqrt(i); // finds square root
+        if (Math.floor(sqRoot) !== sqRoot) { // if square root is NOT integer, continues (restarts loop)
+          continue; // skips to next iteration of the loop!
+        }
+        para.textContent += `${i} `; // if square root is an integer, adds the value to the text content
+      }
+    });
+  </script>
+</body>
+</html>
