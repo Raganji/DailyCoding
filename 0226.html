@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>February 26th - while and do while loops</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+
+  <script>
+    //Set variables
+    const cats = ['Pete', 'Biggles', 'Jasmine'];
+
+    let myFavoriteCats = 'My cats are called ';
+
+    let i = 0;
+
+    //Does the loop while x is true
+    while (i < cats.length) {
+      if (i === cats.length - 1) {
+        myFavoriteCats += `and ${cats[i]}.`;
+      } else {
+        myFavoriteCats += `${cats[i]}, `;
+      }
+
+      i++;
+    }
+    console.log(myFavoriteCats);     // "My cats are called Pete, Biggles, and Jasmine."
+    /*
+    initializer
+    while (condition) {
+    // code to run
+
+    final-expression
+    }
+    */
+
+    //Do while loops do the action at least once
+    const cats2 = ['Pete', 'Biggles', 'Jasmine'];
+
+    let myFavoriteCats2 = 'My cats are called ';
+
+    let h = 0;
+
+    do {
+      if (h === cats2.length - 1) {
+        myFavoriteCats2 += `and ${cats2[h]}.`;
+      } else {
+        myFavoriteCats2 += `${cats2[h]}, `;
+      }
+
+      h++;
+    } while (h < cats2.length);
+
+
+    console.log(myFavoriteCats2);     // "My cats are called Pete, Biggles, and Jasmine."
+  </script>
+</body>
+</html>
