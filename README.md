@@ -1,4 +1,4 @@
-# February daily coding challenge
+# Daily coding challenge
 https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-basics
 
 # PROJECT: Pull XLT info in via JSON using API (i.e. search the XLT database externally)
