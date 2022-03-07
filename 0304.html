@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>March 4th - copy one object to another, and delete parts</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+
+  <script>
+    // Set object
+    let user = {
+      name: "John",
+      age: 30,
+      isAdmin: true
+    };
+
+    // "Copy" existing object to new object
+    let newObject = user; // this is shallow copy
+    let deepCopyObject = JSON.parse(JSON.stringify(user)); // this is deep copy
+
+    // Delete from new object using syntax below
+    delete newObject.age;
+    delete deepCopyObject['isAdmin']; // this will be most useful
+
+    console.log('Value of "user" is ' + JSON.stringify(user));
+    console.log('Value of "newObject" is ' + JSON.stringify(newObject));
+    console.log('Value of "deepCopyObject" is ' + JSON.stringify(deepCopyObject));
+
+  </script>
+</body>
+</html>

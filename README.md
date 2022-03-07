@@ -8,6 +8,10 @@ https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-
 - Fourth, find out how to let the user (i.e. set variables) determine the API url (which data to pull) // DONE
 - Fifth, find out how to input right side (string value) and return left side (key ID)
 - Once these are done, the world is your oyster
+- Copy the object (deep copy) and then delete parts of it (that don't match critera)
+- First, if all fields are filled, confirm the object can be pulled in or else don't allow the user to proceed
+- Once object is confirmed (i.e. data exists) then make buttons clickable (can also be reset)
+- Display in table or allow download
 
 # Fun projects to try
 - Run RegEx expressions on inputted text (enter text, enter regex, spit out an output)
