@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drawing table from json object</title>
+  <meta charset="UTF-8"/>
+  <style>
+
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.7em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        color:#404040;
+    }
+
+    .styled-table th {
+        background-color: #85c79b;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 5px 5px;
+    }
+
+    .styled-table td:nth-child(2) {
+      border-left: 1px solid #dddddd;
+    }
+
+    .styled-table th:nth-child(2) {
+      border-left: 1px solid #72ad86;
+    }
+
+    /*.styled-table tbody tr {
+      border-bottom: 1px solid #dddddd;
+      border-left: 1px solid #dddddd;
+      border-right: 1px solid #dddddd;
+    }*/
+
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 2px solid #85c79b;
+    }
+
+    .styled-table tr:hover {
+        /*font-weight: bold;*/
+        color: #2f59cc;
+    }
+
+/*
+    tr:hover {background-color: coral;}
+
+    tr:nth-child(even) {background-color: #f2f2f2;}
+*/
+  </style>
+</head>
+<body>
+<div id="results"></div>
+<button id = "button">copy</button>
+  <script>
+
+    // Set variable for results
+    //const resultsOutput = document.querySelector("#results");
+
+    //Set object
+    let myObject = {
+      "name.name": "John",
+      "age.age": "30",
+      "gender.gender": "male",
+      "handsome.handsome": "pretty all right",
+      "sweet.sweet": "yeah I guess so",
+      "so.far.so.good": "indeedy",
+      "this.one.is.gonna.be.so.very.very.long.you.will.never.know": "oh i guess you mean it's gonna be like super long right? okay let's see",
+    };
+
+    const keypress = prompt("Press a key!")
+
+    if (keypress === "1") {
+      myObject["key.press"] = "You pressed: 1";
+    } else if (keypress === "2") {
+      myObject["key.press"] = "You pressed: 2";
+    } else {
+      myObject["key.press"] = "You pressed something else.";
+    }
+
+    console.log(myObject);
+
+    // resultsOutput.textContent = JSON.stringify(myObject);
+
+    function displayTable() {
+      // here, a function to display results will be made
+      //const myObj = JSON.parse(myObject);
+      let text = `<table id="resultstable" class="styled-table"><thead><tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                  </tr></thead>`
+      for (let x in myObject) {
+        console.log(x);
+        text += "<tr><td>" + x + "</td>"; // shows left side values (keys)
+        text += "<td>" + myObject[x] + "</td></tr>"; // shows right side values (values)
+      }
+      text += "</table>";
+      document.getElementById("results").innerHTML = text;
+    };
+
+    displayTable();
+
+    let table = document.querySelector('#resultstable');
+    let button = document.querySelector('#button');
+    function selectNode(node){
+      let range  =  document.createRange();
+      range.selectNodeContents(node)
+      let select =  window.getSelection()
+      select.removeAllRanges()
+      select.addRange(range)
+    }
+    button.addEventListener('click',function(){
+      selectNode(table);
+      document.execCommand('copy')
+
+    })
+  </script>
+</body>
+</html>

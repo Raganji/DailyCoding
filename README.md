@@ -4,8 +4,8 @@ https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-
 # PROJECT: Pull XLT info in via JSON using API (i.e. search the XLT database externally)
 - First, set up the way to analyze the JSON results (pretty much done in 0209)
 - Second, find a way to return custom text when the key ID doesn't exist (i.e. returns undefined)
-- Third, find out how to pull in the JSON results via API
-- Fourth, find out how to let the user (i.e. set variables) determine the API url (which data to pull)
+- Third, find out how to pull in the JSON results via API // DONE
+- Fourth, find out how to let the user (i.e. set variables) determine the API url (which data to pull) // DONE
 - Fifth, find out how to input right side (string value) and return left side (key ID)
 - Once these are done, the world is your oyster
 
@@ -17,8 +17,19 @@ https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-
 - Create a trello card (any kind)
 - Send something to slack (using API)
 - Simple text replacer
+- Stack a list of keys and get the values for them returned
+
+# XTM related projects
+- Generate token
+- Page for checking things, with token input field to get it to work (blocks outside access)
 
 # Libraries and so on
 - sheetjs: https://github.com/SheetJS
 - jquery: https://jquery.com/
 - jszip: https://stuk.github.io/jszip/
+- https://clipboardjs.com/
+
+# References to consult
+- Using Javascript with SVG https://www.petercollingridge.co.uk/tutorials/svg/interactive/javascript/
+- Changing cursor properties in javascript: https://www.w3schools.com/jsref/prop_style_cursor.asp
+- copy html to clipboard: https://stackoverflow.com/questions/26053004/copy-whole-html-table-to-clipboard-javascript
