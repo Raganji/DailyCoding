@@ -12,6 +12,9 @@ https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-
 - First, if all fields are filled, confirm the object can be pulled in or else don't allow the user to proceed
 - Once object is confirmed (i.e. data exists) then make buttons clickable (can also be reset)
 - Display in table or allow download
+- Shortcuts will be created as an array from separate text/csv file, for easy updating
+- user types "shortcuts" and hits "confirm" then shows overlap of shortcuts
+- we can actually add a check of platforms easily
 
 # Fun projects to try
 - Run RegEx expressions on inputted text (enter text, enter regex, spit out an output)
