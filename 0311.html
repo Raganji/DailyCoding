@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Messing with arrays</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+<div id="results"></div>
+  <script>
+    // Set up example array
+    const allLangs = [
+      { key: 'meat.type.cow', en_US: 'beef', ko_KR: '소고' },
+      { key: 'meat.type.pig',  en_US: 'pork', ko_KR: '' },
+      { key: 'meat.type.chicken', en_US: 'poultry', ko_KR: '' },
+      { key: 'meat.type.fish', en_US: 'fish', ko_KR: '' },
+      { key: 'dairy.type.liquid', en_US: 'milk', ko_KR: '' }
+    ];
+
+    //Set up example object
+    let firstLangObject = {
+      "meat.type.cow": "beef",
+      "meat.type.pig": "pork",
+      "meat.type.chicken": "poultry",
+      "meat.type.fish": "fish",
+      "dairy.type.liquid": "milk",
+      "dairy.type.solid": "cheese",
+      "dairy.type.frombird": "egg",
+    };
+
+    let secondLangObject = {
+      "meat.type.cow": "소고기",
+      "meat.type.pig": "돼지고기",
+      "meat.type.chicken": "닭고기",
+      "meat.type.fish": "생선",
+      "dairy.type.liquid": "우유",
+      "dairy.type.solid": "치즈",
+      "dairy.type.frombird": "계란",
+    };
+
+    //convert object to array
+    let deeperObject = {};
+    let firstLangSig = "en_US";
+    let secondLangSig = "ko_KR";
+
+    for (let x in firstLangObject) {
+      deeperObject[x] = {};
+      deeperObject[x][firstLangSig] = firstLangObject[x];
+      deeperObject[x][secondLangSig] = secondLangObject[x];
+    }
+
+    let searchEntry = new RegExp("/^(?!.*ignoreThis).*/");
+
+    //let deepCopyObject = JSON.parse(JSON.stringify(firstLangObject));
+
+    for (let x in firstLangObject) {
+      if (searchEntry.test(firstLangObject[x])) { // determines if it's a match
+        console.log(x);
+      } else {
+        console.log("no");
+        delete deeperObject[x];
+      }
+    }
+
+    console.log(deeperObject);
+
+    function displayCompareTable() {
+      //table for comparing 2 languages
+      let text = `<table id="resultstable" class="styled-table"><thead><tr>
+                    <th>Key</th>
+                    <th>` + firstLangSig + `</th>
+                    <th>` + secondLangSig + `</th>
+                  </tr></thead>`
+      for (let x in deeperObject) {
+        console.log(x);
+        text += "<tr><td>" + x + "</td>"; // key in first column
+        text += "<td>" + deeperObject[x][firstLangSig] + "</td>" // first language in second column
+        text += "<td>" + deeperObject[x][secondLangSig] + "</td></tr>"; // second langauge in third column
+      }
+      text += "</table>";
+      document.getElementById("results").innerHTML = text;
+    };
+
+    displayCompareTable();
+
+  </script>
+</body>
+</html>
