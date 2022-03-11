@@ -40,3 +40,4 @@ https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-
 - Using Javascript with SVG https://www.petercollingridge.co.uk/tutorials/svg/interactive/javascript/
 - Changing cursor properties in javascript: https://www.w3schools.com/jsref/prop_style_cursor.asp
 - copy html to clipboard: https://stackoverflow.com/questions/26053004/copy-whole-html-table-to-clipboard-javascript
+- RegEx https://regexr.com/
