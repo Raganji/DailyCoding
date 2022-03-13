@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSV to array</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+
+    fetch('example.csv').then(function(response) {
+        if (response.status !== 200) {
+            throw response.status;
+        }
+        return response.text();
+    }).then(function(file_content) {
+        console.log(file_content);
+    }).catch(function(status) {
+        console.log('Error ' + status);
+    });
+
+  </script>
+</body>
+</html>
