@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XLT checker test</title>
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+</head>
+<body>
+  <h2>XLT checker using JSON objects</h2>
+  <div><input id="xltService" type="text">← Service (component)</input></div>
+  <div><input id="xltPlatform" type="text">← Platform</input></div>
+  <div><input id="xltVersion" type="text">← Version/branch</input></div>
+  <div><input id="languageCode" type="text">← Language code</input></div>
+  <div><button id="download">Download</button><button id="reset">Reset</button></div>
+  <div id="output"></div>
+  <script>
+    // Set URL as a variable, define default (reverse proxy must be set in nginx.conf)
+    let xltUrl = "/xlt-api/XLT-MESSAGE/Web%20Browser/1.0.0/en_US/json";
+
+    // Sets up button for event listener, and output for eventual output
+    const downloadButton = document.querySelector("#download");
+    const resetButton = document.querySelector("#reset");
+    const output = document.querySelector("#output");
+
+    // Set initial variables for service, platform, version
+    let xltService = "XLT-MESSAGE";
+    let xltPlatform = "Web%20Browser";
+    let xltVersion = "1.0.0";
+    let languageCode =  "en_US";
+
+    // Gets the field entries while trimming off any spaces
+    function getFields() {
+      xltService = document.getElementById("xltService").value.trim();
+      xltPlatform = document.getElementById("xltPlatform").value.trim();
+      xltVersion = document.getElementById("xltVersion").value.trim();
+      languageCode = document.getElementById("languageCode").value.trim();
+    };
+
+    // Check field syntax, including language codes
+    function checkFields() {
+      // check if language code matches list
+    };
+
+    // generate the api URL using field entries
+    function generateApiUrl() {
+      // put together the URL here
+      xltUrl = ["/xlt-api/", xltService, "/", xltPlatform, "/",
+          xltVersion, "/", languageCode, "/json"].join(""); // "" removes commas from result
+      // for troubleshooting, delete after
+      console.log(xltUrl);
+    };
+
+    // the below 2 functions are for fetching the json data and then stringifying it
+    const getJSON = async url => {
+      const response = await fetch(url);
+      if(!response.ok) { // check if response worked (no 404 errors etc...), if not do this
+        console.log("Oh no! It's an error!");
+        document.getElementById("output").style.color = "red";
+        output.textContent = "There's an error somewhere. Check fields and try again.";
+        throw new Error(response.statusText);
+      };
+      const data = response.json(); // get JSON from the response
+      return data; // returns a promise, which resolves to this data value
+    };
+
+    function downloadData() { // first defines a function for downloading the data
+      console.log("Fetching data...");
+      getJSON(xltUrl).then(data => { // uses URL assigned above
+      console.log(data);
+      });
+    };
+
+    // Function to reset all fields
+    function reset() {
+      // Define variable as all fields
+      const allFields = document.querySelectorAll("#xltService, #xltPlatform, #xltVersion, #languageCode");
+      // Changes value of each thing to ""
+      allFields.forEach(input => {
+        input.value = "";
+      });
+      // Removes any output or error message.
+      output.textContent = "";
+    };
+
+    // wrapper function to do all the things upon button click
+    function getXltData() {
+      getFields();
+      generateApiUrl();
+      downloadData();
+    };
+
+    // Listens for the button click, and displays formula
+    downloadButton.addEventListener('click', getXltData);
+    // Enables reset button
+    resetButton.addEventListener('click', reset);
+
+  </script>
+</body>
+</html>
