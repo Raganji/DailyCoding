@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Testing multikey while maintaining order</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+<div id="results"></div>
+  <script>
+    // Set up example array
+    const multikeyObject = new Object();
+
+    //Set up example object
+    let firstLangObject = {
+      "meat.type.cow": "beef",
+      "meat.type.pig": "pork",
+      "meat.type.chicken": "poultry",
+      "meat.type.fish": "fish",
+      "dairy.type.liquid": "milk",
+      "dairy.type.solid": "cheese",
+      "dairy.type.frombird": "egg",
+    };
+
+    let secondLangObject = {
+      "meat.type.cow": "소고기",
+      "meat.type.pig": "돼지고기",
+      "meat.type.chicken": "닭고기",
+      "meat.type.fish": "생선",
+      "dairy.type.liquid": "우유",
+      "dairy.type.solid": "치즈",
+      "dairy.type.frombird": "계란",
+    };
+
+    //array of search list
+    searchList = ["meat.type.pig", "dairy.type.solid", "meat.type.cow", "dairy.type.frombird", "meat.type.fish"];
+
+    for (let i = 0; i < searchList.length; i++) {
+      for (let key of Object.keys(firstLangObject)) {
+        if (searchList[i] === key) {
+          multikeyObject[key] = firstLangObject[key];
+        }
+      }
+    }
+
+    console.log(multikeyObject);
+
+
+  </script>
+</body>
+</html>

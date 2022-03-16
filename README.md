@@ -2,19 +2,9 @@
 https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-basics
 
 # PROJECT: Pull XLT info in via JSON using API (i.e. search the XLT database externally)
-- First, set up the way to analyze the JSON results (pretty much done in 0209)
-- Second, find a way to return custom text when the key ID doesn't exist (i.e. returns undefined)
-- Third, find out how to pull in the JSON results via API // DONE
-- Fourth, find out how to let the user (i.e. set variables) determine the API url (which data to pull) // DONE
-- Fifth, find out how to input right side (string value) and return left side (key ID)
-- Once these are done, the world is your oyster
-- Copy the object (deep copy) and then delete parts of it (that don't match critera)
-- First, if all fields are filled, confirm the object can be pulled in or else don't allow the user to proceed
-- Once object is confirmed (i.e. data exists) then make buttons clickable (can also be reset)
-- Display in table or allow download
-- Shortcuts will be created as an array from separate text/csv file, for easy updating
 - user types "shortcuts" and hits "confirm" then shows overlap of shortcuts
 - we can actually add a check of platforms easily
+- display guide on "!guide" entry
 
 # Fun projects to try
 - Run RegEx expressions on inputted text (enter text, enter regex, spit out an output)
@@ -41,3 +31,11 @@ https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-
 - Changing cursor properties in javascript: https://www.w3schools.com/jsref/prop_style_cursor.asp
 - copy html to clipboard: https://stackoverflow.com/questions/26053004/copy-whole-html-table-to-clipboard-javascript
 - RegEx https://regexr.com/
+- Replacing html entities https://stackoverflow.com/questions/18749591/encode-html-entities-in-javascript
+- Add search to enter https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
+
+#XLT checker phase 2 (prevent scope creep)
+- Platform checker
+- Multi-lang search
+- Guides?
+- Escaping HTML entities
