@@ -30,12 +30,9 @@ https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-
 - Using Javascript with SVG https://www.petercollingridge.co.uk/tutorials/svg/interactive/javascript/
 - Changing cursor properties in javascript: https://www.w3schools.com/jsref/prop_style_cursor.asp
 - copy html to clipboard: https://stackoverflow.com/questions/26053004/copy-whole-html-table-to-clipboard-javascript
-- RegEx https://regexr.com/
 - Replacing html entities https://stackoverflow.com/questions/18749591/encode-html-entities-in-javascript
-- Add search to enter https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
+- Asyncrhonous https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises
 
 #XLT checker phase 2 (prevent scope creep)
-- Platform checker
 - Multi-lang search
-- Guides?
 - Escaping HTML entities
