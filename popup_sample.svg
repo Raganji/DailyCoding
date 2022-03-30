@@ -1,0 +1,8 @@
+<svg width="278" height="173" viewBox="0 0 278 173" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.888672" y="0.90332" width="277" height="172" rx="15" fill="white"/>
+<path d="M0.888672 132.903H277.889V157.903C277.889 166.188 271.173 172.903 262.889 172.903H15.8887C7.60441 172.903 0.888672 166.188 0.888672 157.903V132.903Z" fill="white"/>
+<text fill="#111111" xml:space="preserve" style="white-space: pre" font-family="system-ui" font-size="15" font-weight="bold" letter-spacing="-0.214286px"><tspan x="51.0992" y="147.235">Cancel</tspan></text>
+<text fill="#06C755" xml:space="preserve" style="white-space: pre" font-family="system-ui" font-size="15" font-weight="bold" letter-spacing="-0.214286px"><tspan x="191.268" y="147.235">OK</tspan></text>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="system-ui" font-size="16" font-weight="bold" letter-spacing="-0.15px"><tspan x="48.1746" y="47.0908">Add your Birthday date</tspan></text>
+<text fill="#777777" xml:space="preserve" style="white-space: pre" font-family="system-ui" font-size="13" letter-spacing="-0.15px"><tspan x="26.6173" y="67.5244">Through the settings, you can receive </tspan><tspan x="19.7733" y="83.5244">recommendations for a personalized list</tspan></text>
+</svg>
