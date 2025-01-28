@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>June 2nd - UXW scheduler test</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+<div id="demo"></div>
+  <script>
+
+    // Gets current timestamp (time since unix epoch in UTC)
+    const currentDate = Date.now();
+
+    console.log(currentDate);
+
+    // Converts to date object, while adding 32.4 million ms to convert to KST
+    let today = new Date(currentDate.valueOf() + 32400000);
+
+    // Creates functions to check if weekday or weekend (returns true or false)
+    const isWeekday = date => date.getDay() % 6 !== 0;
+    const isWeekend = date => date.getDay() % 6 === 0;
+
+    // Sets up a date to string converter for checking against holidays
+    const holidayFormatter = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    console.log('Todays date in holiday format:' + holidayFormatter.format(today));
+
+    // Function to check if date is in array of dates
+    function isHoliday(date,array) {
+        let a = array.indexOf(date) > -1;
+        if (a == false) {
+            return false; // Case if date is not in array
+        }
+        else {
+            return true; // Case if date is in array
+        }
+    };
+
+    /////////////////////////////////////////////
+    // Create array from CSV file for holidays //
+    /////////////////////////////////////////////
+
+    //Global this variable
+    let holidays;
+
+    //Fetch the holidays csv
+    fetch('holidays.csv').then(function(response) {
+        if (response.status !== 200) {
+            throw response.status;
+        }
+        return response.text();
+    }).then(function(file_content) {
+        //console.log(file_content);
+        holidays = shortcutsFromCSV(file_content);
+    }).catch(function(status) {
+        console.log('Error ' + status);
+    });
+
+    //Converts the holidays CSV to an array
+    function shortcutsFromCSV(data) {
+        //create empty array
+        const csvData = [];
+        //return each line as individual string
+        const csvLines = data.split("\n");
+
+        //loop through the lines and return an array of individual strings separated by comma
+        for (let i = 0; i < csvLines.length; i++) {
+            csvData[i] = csvLines[i];
+        }
+
+        //return an array of arrays
+        return csvData;
+        };
+
+    // Creates variable with the milliseconds in a single day (not used)
+    const singleDay = 60 * 60 * 24 * 1000;
+
+    let requestDay = today;
+
+    // Sets up formatter for dates (only shows parts we want)
+    const dateFormatter = new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'numeric'});
+
+    // Function to get the next workday
+    function closestWorkday(n) {
+
+        // while loop that adds days if a weekend (Sat or Sun)
+        while (isWeekend(n)) {
+          n.setDate(n.getDate()+1);
+        }
+
+        // need another thing here to check against holidays
+        while (isHoliday(holidayFormatter.format(n),holidays)) {
+          n.setDate(n.getDate()+1);  
+        }
+    };
+
+    closestWorkday(requestDay);
+
+    // Function to add days
+    function addDays(date, days) {
+        let result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    };
+
+    // Defines the other days
+    let w1deadline = addDays(requestDay,2);
+    closestWorkday(w1deadline);
+    let draftDeadline = addDays(w1deadline,1);
+    closestWorkday(draftDeadline);
+    let plannerFeedback = addDays(draftDeadline,1);
+    closestWorkday(plannerFeedback);
+    let sourceConfirmation = addDays(plannerFeedback,1);
+    closestWorkday(sourceConfirmation);
+    let filesReady = addDays(sourceConfirmation,1);
+    closestWorkday(filesReady);
+    let translationDone = addDays(filesReady,2);
+    closestWorkday(translationDone);
+
+    // Shows date in formatted style
+    console.log('Request day in proper format:' + dateFormatter.format(requestDay));
+    console.log('W1 deadline in proper format:' + dateFormatter.format(w1deadline));
+    console.log('Draft deadline in proper format:' + dateFormatter.format(draftDeadline));
+    console.log('Planner feedback in proper format:' + dateFormatter.format(plannerFeedback));
+    console.log('Source confirmation in proper format:' + dateFormatter.format(sourceConfirmation));
+    console.log('Files ready, start multi in proper format:' + dateFormatter.format(filesReady));
+    console.log('Translation done in proper format:' + dateFormatter.format(translationDone));
+
+    // Example of using the function to check
+    let week = isWeekday(today);
+    let weekend = isWeekend(today);
+
+    // Sets variables for parts
+
+
+
+
+  </script>
+</body>
+</html>
